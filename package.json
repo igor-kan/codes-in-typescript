@@ -1,0 +1,12 @@
+{
+  "name": "@igor-kan/codes-in-typescript",
+  "version": "1.0.0",
+  "description": "Strictly typed numerical algorithms, mathematical approximations, and spectral methods in TypeScript.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
