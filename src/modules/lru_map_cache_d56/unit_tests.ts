@@ -1,0 +1,11 @@
+import { assert } from "./errors.js";
+import * as Core from "./core.js";
+import { checkNonNeg } from "./validation.js";
+checkNonNeg(1);
+const c = new Core.LruCache<number>(2);
+c.put("a", 1);
+c.put("b", 2);
+assert.equal(c.get("a"), 1);
+c.put("c", 3);
+assert.equal(c.get("b"), undefined);
+assert.equal(c.get("c"), 3);
