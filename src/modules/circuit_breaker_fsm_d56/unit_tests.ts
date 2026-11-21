@@ -1,0 +1,11 @@
+import { assert } from "./errors.js";
+import * as Core from "./core.js";
+import { checkNonNeg } from "./validation.js";
+checkNonNeg(1);
+const cb = new Core.CircuitBreaker(2, 100);
+cb.recordFailure(10);
+cb.recordFailure(20);
+assert.equal(cb.allowRequest(50), false);
+assert.equal(cb.allowRequest(125), true);
+cb.recordSuccess();
+assert.equal(cb.currentState(130), "CLOSED");
