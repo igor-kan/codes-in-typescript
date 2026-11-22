@@ -1,0 +1,11 @@
+import { assert } from "./errors.js";
+import * as Core from "./core.js";
+import { checkNonNeg } from "./validation.js";
+checkNonNeg(1);
+const bus = new Core.TypedEventBus<{ tick: number }>();
+let acc = 0;
+const off = bus.on("tick", (n) => { acc += n; });
+bus.emit("tick", 5);
+off();
+bus.emit("tick", 9);
+assert.equal(acc, 5);
