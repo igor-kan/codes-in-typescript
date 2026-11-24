@@ -1,0 +1,10 @@
+import { assert } from "./errors.js";
+import * as Core from "./core.js";
+import { checkNonNeg } from "./validation.js";
+checkNonNeg(1);
+const c = new Core.ExplicitLru<number>(2);
+c.put("x", 1); c.put("y", 2);
+assert.equal(c.get("x"), 1);
+c.put("z", 3);
+assert.equal(c.get("y"), undefined);
+assert.equal(c.get("z"), 3);
