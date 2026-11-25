@@ -1,0 +1,11 @@
+import { assert } from "./errors.js";
+import * as Core from "./core.js";
+import { checkNonNeg } from "./validation.js";
+checkNonNeg(1);
+const sl = new Core.SkipListMap();
+sl.set(30, "thirty");
+sl.set(10, "ten");
+sl.set(20, "twenty");
+assert.equal(sl.get(20), "twenty");
+assert.equal(sl.get(99), undefined);
+assert.deepEqual(sl.entries().map((e) => e.key), [10, 20, 30]);
