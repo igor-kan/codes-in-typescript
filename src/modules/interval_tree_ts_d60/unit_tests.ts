@@ -1,0 +1,10 @@
+import { assert } from "./errors.js";
+import * as Core from "./core.js";
+import { checkNonNeg } from "./validation.js";
+checkNonNeg(1);
+const tr = new Core.IntervalTree();
+tr.insert({ lo: 15, hi: 20, id: 1 });
+tr.insert({ lo: 10, hi: 30, id: 2 });
+tr.insert({ lo: 5, hi: 9, id: 3 });
+const ids = tr.overlaps(14, 16).map((x) => x.id).sort((a, b) => a - b);
+assert.deepEqual(ids, [1, 2]);
